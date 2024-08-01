@@ -10,18 +10,27 @@ const todos = [
 ];
 
 const todoInputEl = document.getElementById("todo-input");
+const todoAddBtn = document.getElementById("add-todo-btn");
+
+function renderTodoItemFromInputValue() {
+  const valueInput = {
+    // obtener valor del input
+    name: todoInputEl.value,
+  };
+  // llamar a la función renderTodoItem con ese valor
+  renderTodoItem(valueInput);
+  // limpiar valor del input
+  todoInputEl.value = "";
+}
 
 todoInputEl.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-    const valueInput = {
-      // obtener valor del input
-      name: todoInputEl.value,
-    };
-    // llamar a la función renderTodoItem con ese valor
-    renderTodoItem(valueInput);
-    // limpiar valor del input
-    todoInputEl.value = "";
+    renderTodoItemFromInputValue();
   }
+});
+
+todoAddBtn.addEventListener("click", function () {
+  renderTodoItemFromInputValue();
 });
 
 const renderTodoItem = (todo) => {
