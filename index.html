@@ -10,7 +10,7 @@
   <body
     class="max-w-[1280px] h-[1200px] mt-[10%] mx-auto my-1 shadow-2xl p-6 rounded-3xl bg-[#9b9bee]"
   >
-    <header>
+    <header class="mb-10">
       <h1 class="text-[52px] font-bold text-center text-[#3a3a8d]">TODO APP</h1>
       <p class="text-[25px] text-center text-[white]">
         Here you can add each of your pending tasks, list them and delete them
@@ -18,13 +18,13 @@
       </p>
     </header>
 
-    <section class="input__text">
+    <section class="flex gap-6 items-center">
       <!-- <input type="text" placeholder="Write here your pending task" />
       <button type="submit">Add Task</button> -->
 
       <input
         type="text"
-        class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:text-white tracking-wide"
+        class="peer h-full flex-grow rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:text-white tracking-wide"
         placeholder="Write here your pending task"
         required
       />
