@@ -23,12 +23,14 @@
       <button type="submit">Add Task</button> -->
 
       <input
+        id="todo-input"
         type="text"
         class="peer h-full flex-grow rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:text-white tracking-wide"
         placeholder="Write here your pending task"
         required
       />
       <button
+        id="add-todo-btn"
         class="top-1 z-10 select-none rounded bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
         type="button"
         data-ripple-light="true"
@@ -38,11 +40,11 @@
       </button>
     </section>
 
-    <section class="list__tasks">
-      <ul>
-        <h4 class="text-[#3a3a8d] font-bold p-5 text-center text-[40px]">
-          Your Tasks
-        </h4>
+    <section>
+      <h4 class="text-[#3a3a8d] font-bold p-5 text-center text-[40px]">
+        Your Tasks
+      </h4>
+      <ul id="todo-list">
         <li class="flex flex-row h-[80px] items-center gap-6">
           <input class="" type="checkbox" />
           <p class="flex-grow text-white text-xl tracking-wide">
