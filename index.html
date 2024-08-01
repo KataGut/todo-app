@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Todo App</title>
+  </head>
+  <body
+    class="max-w-[1280px] mx-auto my-1 shadow-lg p-6 rounded-3xl bg-[#9b9bee]"
+  >
+    <header>
+      <h1 class="text-[52px] font-bold text-center text-[#3a3a8d]">TODO APP</h1>
+      <p class="text-[30px] text-center text-[white]">
+        Here you can add each of your pending tasks, list them and delete them
+        whenever you want.
+      </p>
+    </header>
+
+    <section class="input__text">
+      <!-- <input type="text" placeholder="Write here your pending task" />
+      <button type="submit">Add Task</button> -->
+
+      <input
+        type="text"
+        class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:text-white"
+        placeholder="Write here your pending task"
+        required
+      />
+      <button
+        class="top-1 z-10 select-none rounded bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
+        type="button"
+        data-ripple-light="true"
+        cursor-text
+      >
+        Add Task
+      </button>
+    </section>
+
+    <section class="list__tasks">
+      <ul>
+        <h4>Your Tasks</h4>
+        <li>
+          <p>(Here is going to be showed your task added)</p>
+          <button type="button">Delete</button>
+        </li>
+      </ul>
+
+      <input type="checkbox" />
+    </section>
+
+    <script type="module" src="/script.js"></script>
+    <!--   
+    TODO = "tarea por hacer"
+1. crear la estructura de la página: un input de texto, y luego una lista desordenada en donde cada elemento será un item TODO, tendrá un checkbox, el texto del TODO y al final un botón para eliminar. Para la lista de elementos, crear un array de objetos, en donde cada objeto será un TODO, cada uno de estos objetos tendrá el nombre y un booleano para saber si el TODO fue completado a no. 
+2. crear un elemento input de texto, añadirle un listener para que cuando el usuario le de enter, el valor del input sea almacenado en el arreglo de los elementos TODO.
+   -->
+  </body>
+</html>
