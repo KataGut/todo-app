@@ -8,11 +8,11 @@
     <title>Todo App</title>
   </head>
   <body
-    class="max-w-[1280px] mx-auto my-1 shadow-lg p-6 rounded-3xl bg-[#9b9bee]"
+    class="max-w-[1280px] h-[1200px] mt-[10%] mx-auto my-1 shadow-2xl p-6 rounded-3xl bg-[#9b9bee]"
   >
     <header>
       <h1 class="text-[52px] font-bold text-center text-[#3a3a8d]">TODO APP</h1>
-      <p class="text-[30px] text-center text-[white]">
+      <p class="text-[25px] text-center text-[white]">
         Here you can add each of your pending tasks, list them and delete them
         whenever you want.
       </p>
@@ -24,7 +24,7 @@
 
       <input
         type="text"
-        class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:text-white"
+        class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:text-white tracking-wide"
         placeholder="Write here your pending task"
         required
       />
@@ -40,14 +40,22 @@
 
     <section class="list__tasks">
       <ul>
-        <h4>Your Tasks</h4>
-        <li>
-          <p>(Here is going to be showed your task added)</p>
-          <button type="button">Delete</button>
+        <h4 class="text-[#3a3a8d] font-bold p-5 text-center text-[40px]">
+          Your Tasks
+        </h4>
+        <li class="flex flex-row h-[80px] items-center gap-6">
+          <input class="" type="checkbox" />
+          <p class="flex-grow text-white text-xl tracking-wide">
+            (Here is going to be showed your task added)
+          </p>
+          <button
+            class="top-1 z-10 select-none rounded bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
+            type="button"
+          >
+            Delete
+          </button>
         </li>
       </ul>
-
-      <input type="checkbox" />
     </section>
 
     <script type="module" src="/script.js"></script>
