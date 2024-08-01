@@ -9,12 +9,21 @@ const todos = [
   },
 ];
 
-// function renderTodoItem (todo) {
-//   const todoListEl = document.getElementById("todo-list");
-//   const li = document.createElement("li");
-//   li.innerText = todo.name;
-//   todoListEl.appendChild(li);
-// };
+const todoInputEl = document.getElementById("todo-input");
+
+todoInputEl.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    const valueInput = {
+      // obtener valor del input
+      name: todoInputEl.value,
+    };
+    // llamar a la función renderTodoItem con ese valor
+    renderTodoItem(valueInput);
+    // limpiar valor del input
+    todoInputEl.value = "";
+  }
+});
+
 const renderTodoItem = (todo) => {
   const todoListEl = document.getElementById("todo-list");
   const li = document.createElement("li");
