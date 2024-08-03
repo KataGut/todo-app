@@ -42,6 +42,13 @@ const renderTodoItem = (todo) => {
   inputPEl.innerText = todo.name;
   inputPEl.className += "flex-grow text-white text-xl tracking-wide";
 
+  //Crea el "Delete btn" en memoria
+  const deleteEl = document.createElement("button");
+  deleteEl.type = "button";
+  deleteEl.innerText = "DELETE";
+  deleteEl.className +=
+    "top-1 z-10 select-none rounded bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none";
+
   //Añade un hijo "li" al "ul"
   todoListEl.appendChild(liEl);
   liEl.className += "flex flex-row h-[80px] items-center gap-6";
@@ -50,6 +57,9 @@ const renderTodoItem = (todo) => {
   liEl.appendChild(inputCheckboxEl);
   //Añade un hijo "p" al "li"
   liEl.appendChild(inputPEl);
+
+  //Añade un hijo "checkbox" al "li"
+  liEl.appendChild(deleteEl);
 
   // Pte Checkbox marque tarea como completada
 };
