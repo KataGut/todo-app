@@ -1,4 +1,4 @@
-const todos = [
+const initialTodos = [
   {
     name: "Barrer",
     completed: true,
@@ -23,6 +23,25 @@ function renderTodoItemFromInputValue() {
   todoInputEl.value = "";
 }
 
+const renderTodoItem = (todo) => {
+  const todoListEl = document.getElementById("todo-list");
+  const liEl = document.createElement("li");
+  liEl.innerText = todo.name;
+  liEl.className +=
+    "flex-grow text-white text-xl tracking-wide flex flex-row h-[70px] items-center";
+
+  const inputCheckboxEl = document.createElement("input");
+  inputCheckboxEl.type = "checkbox";
+  inputCheckboxEl.className += "";
+  // Pte Checkbox marque tarea ccomo completada
+
+  todoListEl.appendChild(liEl);
+};
+
+initialTodos.forEach((todo) => {
+  renderTodoItem(todo);
+});
+
 todoInputEl.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     renderTodoItemFromInputValue();
@@ -32,19 +51,3 @@ todoInputEl.addEventListener("keypress", function (event) {
 todoAddBtn.addEventListener("click", function () {
   renderTodoItemFromInputValue();
 });
-
-const renderTodoItem = (todo) => {
-  const todoListEl = document.getElementById("todo-list");
-  const li = document.createElement("li");
-  li.innerText = todo.name;
-  todoListEl.appendChild(li);
-  li.className +=
-    "flex-grow text-white text-xl tracking-wide flex flex-row h-[70px] items-center";
-};
-
-todos.forEach(
-  //
-  (todo) => {
-    renderTodoItem(todo);
-  }
-);
