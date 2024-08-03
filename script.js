@@ -1,11 +1,25 @@
-//Objetos de ejemplo
-const initialTodos = [
+import { v4 as uuidv4 } from "uuid";
+
+//Objetos iniciales
+const todos = [
   {
+    id: uuidv4(),
     name: "Barrer",
     completed: true,
   },
   {
+    id: uuidv4(),
     name: "Sacar al perro",
+    completed: false,
+  },
+  {
+    id: uuidv4(),
+    name: "Sacar al gato",
+    completed: false,
+  },
+  {
+    id: uuidv4(),
+    name: "Sacar al pájaro",
     completed: false,
   },
 ];
@@ -13,23 +27,36 @@ const initialTodos = [
 //Acceder a los elementos HTML en JS
 const todoInputEl = document.getElementById("todo-input");
 const todoAddBtn = document.getElementById("add-todo-btn");
+const todoListEl = document.getElementById("todo-list");
 
-//Mostrar Todo escrito en el input a "Your Tasks"
-function renderTodoItemFromInputValue() {
-  const valueInput = {
-    // obtener valor del input
-    name: todoInputEl.value,
-  };
-  // llamar a la función renderTodoItem con ese valor para mostrarlo
-  renderTodoItem(valueInput);
-  // limpiar valor del input
-  todoInputEl.value = "";
+function renderAllTodos() {
+  //limpia todos los Todos
+  todoListEl.innerText = "";
+  todos.forEach((todo) => {
+    renderTodoItem(todo);
+  });
 }
 
+//Función para añadir nuevo todo item al arreglo y renderizar los todos
+function addNewTodoItem() {
+  const newTodoItem = {
+    id: uuidv4(),
+    // obtener valor del input
+    name: todoInputEl.value,
+    completed: false,
+  };
+  // Añade nuevo Todo al arreglo
+  todos.push(newTodoItem);
+  // limpiar valor del input
+  todoInputEl.value = "";
+
+  renderAllTodos();
+}
+
+console.log(todos);
 //Función que hace posible mostrar las tareas en la pantalla
 const renderTodoItem = (todo) => {
   //Crea un elemento hijo "li" en memoria
-  const todoListEl = document.getElementById("todo-list");
   const liEl = document.createElement("li");
 
   //Crea el checkbox en memoria
@@ -48,9 +75,26 @@ const renderTodoItem = (todo) => {
   deleteEl.innerText = "DELETE";
   deleteEl.className +=
     "m-3 text-base top-1 z-10 select-none rounded bg-pink-500 py-3 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none";
+
   //Identifica el evento click "delete btn" y hace la logica para eliminarlo de "your tasks"
   deleteEl.addEventListener("click", function () {
-    liEl.remove();
+    // encontrar el id del li a eliminar
+    const idToRemove = todo.id;
+    console.log("idToRemove", idToRemove);
+    // buscar indice del item en el arreglo a eliminar
+    const indexOfItemToRemove = todos.findIndex(
+      (item) => item.id === idToRemove
+    );
+
+    //si encontró el indice del item a eliminar
+    // just in case, puede nunca pasar
+    if (indexOfItemToRemove !== -1) {
+      // eliminarlo del arreglo
+      todos.splice(indexOfItemToRemove, 1);
+
+      // renderizar all todos again
+      renderAllTodos();
+    }
   });
 
   //Añade un hijo "li" al "ul"
@@ -68,19 +112,16 @@ const renderTodoItem = (todo) => {
   // Pte Checkbox marque tarea como completada
 };
 
-//Es el ejemplo de cómo se mostraria en la pag cada tarea creada
-initialTodos.forEach((todo) => {
-  renderTodoItem(todo);
-});
+renderAllTodos();
 
 //Identifica el evento de enter y hace la logica para agregarlo a "your tasks"
 todoInputEl.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-    renderTodoItemFromInputValue();
+    addNewTodoItem();
   }
 });
 
 //Identifica el evento click "add todo" y hace la logica para agregarlo a "your tasks"
 todoAddBtn.addEventListener("click", function () {
-  renderTodoItemFromInputValue();
+  addNewTodoItem();
 });
