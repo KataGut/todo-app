@@ -35,7 +35,7 @@ const renderTodoItem = (todo) => {
   //Crea el checkbox en memoria
   const inputCheckboxEl = document.createElement("input");
   inputCheckboxEl.type = "checkbox";
-  inputCheckboxEl.className += "";
+  inputCheckboxEl.className += "size-5 m-3";
 
   //Crea el "p" en memoria
   const inputPEl = document.createElement("p");
@@ -47,7 +47,7 @@ const renderTodoItem = (todo) => {
   deleteEl.type = "button";
   deleteEl.innerText = "DELETE";
   deleteEl.className +=
-    "top-1 z-10 select-none rounded bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none";
+    "m-3 text-base top-1 z-10 select-none rounded bg-pink-500 py-3 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none";
   //Identifica el evento click "delete btn" y hace la logica para eliminarlo de "your tasks"
   deleteEl.addEventListener("click", function () {
     liEl.remove();
