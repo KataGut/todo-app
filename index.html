@@ -44,14 +44,15 @@
       <h4 class="text-[#3a3a8d] font-bold p-5 text-center text-[40px]">
         Your Tasks
       </h4>
+      <label>Filter by Status</label>
       <select
         class="form-control max-w-sm mx-auto block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-purple-600 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-        name="filterCompleted"
-        id="filterCompleted"
+        name="status-filter"
+        id="status-filter"
       >
-        <option class="">Filter by status</option>
-        <option value="1">Completed</option>
-        <option value="2">Pending</option>
+        <option value="all">All</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
       </select>
       <ul id="todo-list"></ul>
     </section>

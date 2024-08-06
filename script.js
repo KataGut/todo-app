@@ -24,16 +24,25 @@ const todos = [
   },
 ];
 
+let filterBy = "all"; // "completed" o "pending"
+
 //Acceder a los elementos HTML en JS
 const todoInputEl = document.getElementById("todo-input");
 const todoAddBtn = document.getElementById("add-todo-btn");
 const todoListEl = document.getElementById("todo-list");
+const filterSelectEl = document.getElementById("status-filter");
 
 function renderAllTodos() {
   //limpia todos los Todos
   todoListEl.innerText = "";
   todos.forEach((todo) => {
-    renderTodoItem(todo);
+    if (filterBy === "pending" && !todo.completed) {
+      renderTodoItem(todo);
+    } else if (filterBy === "completed" && todo.completed === true) {
+      renderTodoItem(todo);
+    } else if (filterBy === "all") {
+      renderTodoItem(todo);
+    }
   });
 }
 
@@ -124,4 +133,10 @@ todoInputEl.addEventListener("keypress", function (event) {
 //Identifica el evento click "add todo" y hace la logica para agregarlo a "your tasks"
 todoAddBtn.addEventListener("click", function () {
   addNewTodoItem();
+});
+
+filterSelectEl.addEventListener("change", function () {
+  filterBy = filterSelectEl.value;
+  console.log(filterBy);
+  renderAllTodos();
 });
