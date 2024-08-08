@@ -71,12 +71,20 @@ const renderTodoItem = (todo) => {
   //Crea el checkbox en memoria
   const inputCheckboxEl = document.createElement("input");
   inputCheckboxEl.type = "checkbox";
+  inputCheckboxEl.id = todo.id;
   inputCheckboxEl.className += "size-5 m-3";
+  inputCheckboxEl.checked = todo.completed;
+  inputCheckboxEl.addEventListener("change", function (event) {
+    todo.completed = event.target.checked;
+
+    renderAllTodos();
+  });
 
   //Crea el "p" en memoria
-  const inputPEl = document.createElement("p");
-  inputPEl.innerText = todo.name;
-  inputPEl.className += "flex-grow text-white text-xl tracking-wide";
+  const inputLabelEl = document.createElement("label");
+  inputLabelEl.innerText = todo.name;
+  inputLabelEl.setAttribute("for", todo.id);
+  inputLabelEl.className += "flex-grow text-white text-xl tracking-wide";
 
   //Crea el "Delete btn" en memoria
   const deleteEl = document.createElement("button");
@@ -113,7 +121,7 @@ const renderTodoItem = (todo) => {
   //Añade un hijo "checkbox" al "li"
   liEl.appendChild(inputCheckboxEl);
   //Añade un hijo "p" al "li"
-  liEl.appendChild(inputPEl);
+  liEl.appendChild(inputLabelEl);
 
   //Añade un hijo "checkbox" al "li"
   liEl.appendChild(deleteEl);
