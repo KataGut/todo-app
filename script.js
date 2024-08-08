@@ -35,15 +35,21 @@ const filterSelectEl = document.getElementById("status-filter");
 function renderAllTodos() {
   //limpia todos los Todos
   todoListEl.innerText = "";
-  todos.forEach((todo) => {
-    if (filterBy === "pending" && !todo.completed) {
-      renderTodoItem(todo);
-    } else if (filterBy === "completed" && todo.completed === true) {
-      renderTodoItem(todo);
-    } else if (filterBy === "all") {
-      renderTodoItem(todo);
-    }
-  });
+
+  const filteredTodos = todos.filter(
+    (todo) =>
+      (filterBy === "pending" && !todo.completed) ||
+      (filterBy === "completed" && todo.completed) ||
+      filterBy === "all"
+  );
+
+  if (filteredTodos.length === 0) {
+    const liEmptyEl = document.createElement("li");
+    liEmptyEl.innerHTML = "There are not results";
+    todoListEl.appendChild(liEmptyEl);
+  }
+
+  filteredTodos.forEach((todo) => renderTodoItem(todo));
 }
 
 //Función para añadir nuevo todo item al arreglo y renderizar los todos
@@ -62,7 +68,6 @@ function addNewTodoItem() {
   renderAllTodos();
 }
 
-console.log(todos);
 //Función que hace posible mostrar las tareas en la pantalla
 const renderTodoItem = (todo) => {
   //Crea un elemento hijo "li" en memoria
@@ -97,7 +102,6 @@ const renderTodoItem = (todo) => {
   deleteEl.addEventListener("click", function () {
     // encontrar el id del li a eliminar
     const idToRemove = todo.id;
-    console.log("idToRemove", idToRemove);
     // buscar indice del item en el arreglo a eliminar
     const indexOfItemToRemove = todos.findIndex(
       (item) => item.id === idToRemove
@@ -145,6 +149,5 @@ todoAddBtn.addEventListener("click", function () {
 
 filterSelectEl.addEventListener("change", function () {
   filterBy = filterSelectEl.value;
-  console.log(filterBy);
   renderAllTodos();
 });
